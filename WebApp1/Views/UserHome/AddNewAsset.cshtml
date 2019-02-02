@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewData["Title"] = "AddNewAsset";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h1>Assets <a class="fa fa-building"></a></h1>
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <form method="post" asp-controller="UserHome" asp-action="AddNewAsset" enctype="multipart/form-data">
+                        <div class="x_title">
+                            <h2>Add New Asset <a class="fa fa-plus"></a></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <!-- Smart Wizard -->
+                            <div id="wizard" class="form_wizard wizard_horizontal">
+                                <ul class="wizard_steps">
+                                    <li>
+                                        <a href="#step-1">
+                                            <span class="step_no">1</span>
+                                            <span class="step_descr">
+                                                Step 1<br />
+                                                <small>Asset Owner Description</small>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#step-2">
+                                            <span class="step_no">2</span>
+                                            <span class="step_descr">
+                                                Step 2<br />
+                                                <small>Asset Description</small>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#step-3">
+                                            <span class="step_no">3</span>
+                                            <span class="step_descr">
+                                                Step 3<br />
+                                                <small>Extra descriptions</small>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="form-horizontal form-label-left">
+                                    <div id="step-1">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                                First Name <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" required="required" name="First_Name" class="form-control has-feedback-left" id="inputSuccess2">
+                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                Last Name <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" required="required" name="Last_Name" class="form-control has-feedback-left" id="inputSuccess2">
+                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="Middle_Name" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <div id="demo-form" class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
+                                            <p style="padding-top:6px;">
+                                                Male:
+                                                <input type="radio" class="flat" name="Gender" id="genderM" value="Male" checked="" required /> Female:
+                                                <input type="radio" class="flat" name="Gender" id="genderF" value="Female" />
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                Phone Number <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="Phone_Number" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div id="step-2">
+                                        <div class="form-horizontal form-label-left">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                                    Address <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="Address" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                    <span class="fa fa-map-pin form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                    Location <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="Location" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                    <span class="fa fa-map-signs form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Brief Description about asset <span class="required">*</span> </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="Brief_Description" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                    <span class="fa fa-newspaper-o form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Asset Type <span class="required">*</span></label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select class="select2_group form-control" name="Asset_Type">
+                                                        <optgroup label="House">
+                                                            <option value="Bungalow">Bungalow</option>
+                                                            <option value="Duplex">Duplex</option>
+                                                            <option value="BOF">Blocks of Flat</option>
+                                                            <option value="Flat">Flat</option>
+                                                        </optgroup>
+                                                        <optgroup label="Land">
+                                                            <option value="VL">Virgin Land</option>
+                                                            <option value="LC">Land with completed building</option>
+                                                            <option value="FL">Farm land</option>
+                                                            <option value="LU">Land with uncompleted building</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                    Flat or Block Number <span class="required"></span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="Flat_Block_Number" required="required" class="form-control has-feedback-left" id="inputSuccess2">
+                                                    <span class="fa fa-list-ol form-control-feedback left" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="step-3">
+                                        <div class="clearfix"></div>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-4  "></div>
+
+                                            <div class="col-md-4 col-sm-4 col-xs-4  ">
+                                                <div class="x_panel">
+                                                    <div class="x_content">
+                                                        <p>Click box or drag files to upload related documents and images</p>
+                                                        <input name="Document_Paths" type="file" multiple />
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4  "></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End SmartWizard Content -->
+                            </div>
+                        </div>
+                        <input style="" type="submit" class="btn btn-success" name="Submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

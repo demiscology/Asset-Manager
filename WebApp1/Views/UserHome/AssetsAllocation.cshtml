@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewData["Title"] = "AssetsAllocation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h1>Assets Allocation <a class="fa fa-building"></a>---<a style="margin-left:5px;" class="fa fa-users"></a></h1>
+            </div>
+
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Allocate an asset to a tenant <a class="fa fa-plus"></a></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <form class="form-horizontal form-label-left input_mask" asp-controller="UserHome" asp-action="AssetsAllocation" enctype="multipart/form-data">
+
+
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <label for="heard">Select Tenant *:</label>
+                                <select id="heard" name="TenantId" class="form-control" required>
+                                    @foreach (string tenant in (ViewData["tenants"] as Array))
+                                    {
+                                        <option value="@tenant.Substring(tenant.Length - 36)">@tenant.Remove(tenant.Length - 36) </option>
+
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <label for="heard">Select Available Asset *:</label>
+                                <select id="heard" name="AssetID" class="form-control" required>
+                            
+                                    @foreach (string asset in (ViewData["assets"] as Array))
+                                    {
+                                        <option value="@asset.Substring(asset.Length - 36)">@asset.Remove(asset.Length - 36) </option>
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label >
+                                    Start Date <span class="required">*</span>
+                                </label>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="col-md-6 col-sm-8 col-xs-12 xdisplay_inputx form-group has-feedback">
+                                            <input type="text" class="form-control has-feedback-left" name="Start_Date" id="single_cal4" placeholder="Start_Date" aria-describedby="inputSuccess2Status4">
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            <span id="inputSuccess2Status4" class="sr-only">(success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>
+                                    End Date <span class="required">*</span>
+                                </label>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="col-md-6 col-sm-8 col-xs-12 xdisplay_inputx form-group has-feedback">
+                                            <input type="text" class="form-control has-feedback-left" name="End_Date" id="single_cal2" placeholder="End_Date" aria-describedby="inputSuccess2Status4">
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            <span id="inputSuccess2Status4" class="sr-only">(success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Agreed pay amount * :</label>
+                                <input type="text" id="email" class="form-control" name="Due_Payment" data-parsley-trigger="change" required />
+                            </div>
+                            <input type="submit" name="Submit" class="btn btn-success" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
