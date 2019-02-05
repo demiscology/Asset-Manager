@@ -26,10 +26,11 @@
                             <tr>
                                 <th>Asset Owner</th>
                                 <th>Asset Brief Description</th>
-                                <th>Asser Address</th>
+                                <th>Asset Address</th>
                                 <th>Tenant Name</th>
                                 <th>Tenant Address</th>
                                 <th>Tenant Phone Number</th>
+                                <th>Rent Expiring Day</th>
                                 @*<th>Update</th>*@
                                 <th>Delete</th>
                             </tr>
@@ -44,6 +45,7 @@
                                     <td>@asset.TenantName</td>
                                     <td>@asset.TenantAddress</td>
                                     <td>@asset.TenantNumber</td>
+                            <td>@asset.RentExp</td>
                                     <td><button class="btn btn-block btn-danger" onclick="getVal(this.value)" type="submit" value="@asset.Id">Unallocate</button></td>
                                 </tr>}
                     </table>

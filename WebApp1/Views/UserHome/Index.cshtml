@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebApp1.Models.IndexViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -32,192 +32,71 @@
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-money"></i></div>
-                    <div class="count">179</div>
+                    <div class="count">@ViewData["num_paymentsdue"]</div>
                     <h3>Payments due</h3>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Expiring Rents <small></small></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item One Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Three Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
+                        @{int i = 0;
+                            @foreach (var a in @Model.ToArray())
+                            {
+                                if (a.Exp_State =="0"|| a.Exp_State=="1")
+                                {
+                                    <article class="media event">
+                                        <a class="pull-left date">
+                                            <p class="month"></p>
+                                            <p class="day">@i</p>
+                                        </a>
+                                        <div class="media-body">
+                                            <a class="title" href="#"></a>
+                                            <p>Expiring Date: @a.Date</p>
+                                            <p>Asset Owner: @a.AssetName</p>
+                                            <p>Tenant Name: @a.TenantName</p>
+                                        </div>
+                                    </article>
+                                    i++;
+                                }
+                            }}
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Top Tenants </h2>
+                        <h2>Expired Rents</h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item One Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Three Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Top Assets </h2>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item One Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Two Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
-                        <article class="media event">
-                            <a class="pull-left date">
-                                <p class="month">April</p>
-                                <p class="day">23</p>
-                            </a>
-                            <div class="media-body">
-                                <a class="title" href="#">Item Three Title</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </article>
+                        @{int j = 0;
+                            @foreach (var a in @Model.ToArray())
+                            {
+                                if (a.Exp_State == "-1")
+                                {
+                                    <article class="media event">
+                                        <a class="pull-left date">
+                                            <p class="month"></p>
+                                            <p class="day">@j</p>
+                                        </a>
+                                        <div class="media-body">
+                                            <a class="title" href="#"></a>
+                                            <p>Expired Date: @a.Date</p>
+                                            <p>Asset Owner:@a.AssetName</p>
+                                            <p>Tenant Name: @a.TenantName</p>
+                                        </div>
+                                    </article>
+                                    j++;
+                                }
+                            }}
                     </div>
                 </div>
             </div>
@@ -225,4 +104,3 @@
     </div>
 </div>
 <!-- /page content -->
-

@@ -5,7 +5,6 @@ C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\bin\Debug\netcoreapp2.2\WebAp
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\bin\Debug\netcoreapp2.2\WebApp1.pdb
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\bin\Debug\netcoreapp2.2\WebApp1.Views.dll
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\bin\Debug\netcoreapp2.2\WebApp1.Views.pdb
-C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\WebApp1.csprojAssemblyReference.cache
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\WebApp1.csproj.CoreCompileInputs.cache
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\WebApp1.RazorAssemblyInfo.cache
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\WebApp1.RazorAssemblyInfo.cs
@@ -72,3 +71,6 @@ C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor\Views\UserHome\AddNewTenants.g.cshtml.cs
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor\Views\UserHome\AssetsAllocation.g.cshtml.cs
 C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor\Views\UserHome\ManageAssetsAllocation.g.cshtml.cs
+C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor\Views\UserHome\ManageAsset.g.cshtml.cs
+C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\Razor\Views\UserHome\ManageTenants.g.cshtml.cs
+C:\Users\Enoch Sodiya\source\repos\WebApp1\WebApp1\obj\Debug\netcoreapp2.2\WebApp1.csprojAssemblyReference.cache

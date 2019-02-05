@@ -19,6 +19,7 @@ using WebApp1.Areas.Identity.Pages.Account;
 
 namespace WebApp1.Controllers
 {
+    [Authorize]
     public class UserHomeController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -48,12 +49,53 @@ namespace WebApp1.Controllers
             var num_assets = _db.Asset_Details.Count().ToString();
             var num_allocated = _db.AssetAllocation.Count().ToString();
 
-
-
             ViewData["num_tenants"] = num_tenants;
             ViewData["num_assets"] = num_assets;
             ViewData["num_allocated"] = num_allocated;
-            return View();
+            var count = 0;
+
+            var allocated = _db.AssetAllocation.ToArray();
+
+            List<IndexViewModel> vs = new List<IndexViewModel>();
+
+
+            foreach (var allocated_asset in allocated)
+            {
+                DateTime date = DateTime.ParseExact(allocated_asset.End_Date, "mm/dd/yyyy", null);
+                var date1 = DateTime.ParseExact(DateTime.Today.ToString("mm/dd/yyyy"), "mm/dd/yyyy", null);
+                var compare = DateTime.Compare(date, date1);
+
+
+                if (compare < 0)
+                {
+                    IndexViewModel index = new IndexViewModel
+                    {
+                        TenantName = _db.Tenant_Details.Find(allocated_asset.TenantId).First_Name + " " + _db.Tenant_Details.Find(allocated_asset.TenantId).Last_Name,
+                        AssetName = _db.Asset_Details.Find(allocated_asset.AssetID).First_Name + " " + _db.Asset_Details.Find(allocated_asset.AssetID).Last_Name,
+                        Date = date.ToString(),
+                        Exp_State = compare.ToString()
+                    };
+
+                    vs.Add(index);
+                    count++;
+                }
+                else
+                {
+                    IndexViewModel index = new IndexViewModel
+                    {
+                        TenantName = _db.Tenant_Details.Find(allocated_asset.TenantId).First_Name + " " + _db.Tenant_Details.Find(allocated_asset.TenantId).Last_Name,
+                        AssetName = _db.Asset_Details.Find(allocated_asset.AssetID).First_Name + " " + _db.Asset_Details.Find(allocated_asset.AssetID).Last_Name,
+                        Date = date.ToString(),
+                        Exp_State = compare.ToString()
+                    };
+                    vs.Add(index);
+                }
+
+
+            }
+            ViewData["num_paymentsdue"] = count;
+            vs.ToArray();
+            return View(vs);
         }
 
         public IActionResult AddNewAsset()
@@ -254,7 +296,8 @@ namespace WebApp1.Controllers
                     TenantAddress = Tenant_Details.Address,
                     TenantName = Tenant_Details.First_Name + " " + Tenant_Details.Last_Name,
                     TenantNumber = Tenant_Details.Phone_Number,
-                    Id = AssetAllocation.ID
+                    Id = AssetAllocation.ID,
+                    RentExp = AssetAllocation.End_Date.ToString()
                 };
 
             return View(assetsAllocations);
@@ -273,6 +316,69 @@ namespace WebApp1.Controllers
                 _db.SaveChanges();
                 check = true;
 
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return Json(check);
+        }
+
+        public IActionResult ManageAsset()
+        {
+            var assets = _db.Asset_Details.ToArray();
+            return View(assets);
+        }
+
+        [HttpPost]
+        public IActionResult ManageAsset(string data)
+        {
+            bool check = false;
+
+            try
+            {
+                var _User = _db.Asset_Details.Find(data);
+
+                if (_User.Allocated == "1")
+                {
+                    var asset_allocations = _db.AssetAllocation.ToArray();
+                    foreach (var asset in asset_allocations)
+                    {
+                        if (asset.AssetID == _User.ID)
+                        {
+                            _db.AssetAllocation.Remove(asset);
+                        }
+                    }
+                }
+
+                _db.Asset_Details.Remove(_User);
+                _db.SaveChanges();
+                check = true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return Json(check);
+        }
+
+        public IActionResult ManageTenants()
+        {
+            var tenants = _db.Tenant_Details.ToArray();
+            return View(tenants);
+        }
+
+        [HttpPost]
+        public IActionResult ManageTenants(string data)
+        {
+            bool check = false;
+
+            try
+            {
+                var _User = _db.Tenant_Details.Find(data);
+                _db.Tenant_Details.Remove(_User);
+                _db.SaveChanges();
+                check = true;
             }
             catch (Exception e)
             {
